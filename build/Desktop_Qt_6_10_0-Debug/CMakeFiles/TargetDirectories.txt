@@ -1,0 +1,9 @@
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/start.dir
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/edit_cache.dir
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/rebuild_cache.dir
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/list_install_components.dir
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/install.dir
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/install/local.dir
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/install/strip.dir
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/start_autogen_timestamp_deps.dir
+/home/danya/sourse/ping_manager/build/Desktop_Qt_6_10_0-Debug/CMakeFiles/start_autogen.dir

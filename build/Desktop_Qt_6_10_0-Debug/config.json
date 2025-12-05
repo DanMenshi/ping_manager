@@ -1,0 +1,24 @@
+{
+    "targets": [
+        {
+            "host": "youtube.com",
+            "last_ping": 6,
+            "port": 443
+        },
+        {
+            "host": "gosuslugi.ru",
+            "last_ping": 10,
+            "port": 443
+        },
+        {
+            "host": "allink.com.br",
+            "last_ping": 120,
+            "port": 443
+        },
+        {
+            "host": "ebay.com.au",
+            "last_ping": 41,
+            "port": 443
+        }
+    ]
+}
