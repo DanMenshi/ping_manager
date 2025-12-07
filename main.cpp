@@ -10,6 +10,7 @@ int main(int argc, char *argv[]) {
 
     for (auto t : s.getTargets()) {
         std::make_shared<client>(io, t, s)->start();
+
     }
 
 
