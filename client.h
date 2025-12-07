@@ -3,6 +3,7 @@
 #include <boost/asio.hpp>
 #include "target.h"
 #include "config.h"
+#include "timer.h"
 
 namespace asio = boost::asio;
 using tcp = boost::asio::ip::tcp;
@@ -13,19 +14,18 @@ public:
     client(asio::io_context& io, target& target, config& c);
     void start();
 
-    target& target_;
 private:
     void do_resolve();
     void do_connect(const tcp::resolver::results_type& endpoints);
+
     config& c_;
+    target& target_;
     asio::io_context& io_;
 
     tcp::resolver resolver_;
     tcp::socket socket_;
     tcp::endpoint endpoint_;
-
-    std::chrono::high_resolution_clock::time_point first;
-    std::chrono::high_resolution_clock::time_point second;
+    timer time;
 };
 
 #endif // CLIENT_H

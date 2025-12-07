@@ -8,8 +8,8 @@ class config {
 public:
     config();
     void add_new_target(const std::string& host, int port);
-    void setPing(const std::string& host, int port, std::chrono::milliseconds ms);
-
+    void setPing(const std::string& host, int port, std::chrono::milliseconds ms, std::chrono::microseconds mics);
+    void setPing(target& target);
     void printJson() const;
     std::vector<target>& getTargets();
     void sync();

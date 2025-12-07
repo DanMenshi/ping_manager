@@ -7,15 +7,11 @@ int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
     boost::asio::io_context io;
     config s{};
-    std::vector<std::shared_ptr<client>> arr;
-    s.add_new_target("ebay.com.au", 443);
-    for (auto& t : s.getTargets()) {
-        auto ptr = std::make_shared<client>(io, t, s);
-        ptr->start();
-        arr.push_back(ptr);
+
+
+    for (auto t : s.getTargets()) {
+        std::make_shared<client>(io, t, s)->start();
     }
-
-
 
 
     io.run();
