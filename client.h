@@ -19,6 +19,7 @@ private:
     void do_connect(const tcp::resolver::results_type& endpoints);
     config& c_;
     asio::io_context& io_;
+
     tcp::resolver resolver_;
     tcp::socket socket_;
     tcp::endpoint endpoint_;
