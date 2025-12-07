@@ -17,6 +17,7 @@ public:
 private:
     void do_resolve();
     void do_connect(const tcp::resolver::results_type& endpoints);
+
     config& c_;
     asio::io_context& io_;
     tcp::resolver resolver_;

@@ -39,8 +39,8 @@ void client::do_connect(const tcp::resolver::results_type& endpoints) {
             if (!ec) {
                 self->endpoint_ = endpoint;
                 self->second = std::chrono::high_resolution_clock::now();
-                self->target_.last_ping = std::chrono::duration_cast<std::chrono::milliseconds>(self->second - self->first);
-                std::cout << endpoint.address().to_string() << ":" << endpoint.port() << " time to conn: " << self->target_.last_ping.count() << "ms." << std::endl;
+                self->target_.ping_milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(self->second - self->first);
+                std::cout << endpoint.address().to_string() << ":" << endpoint.port() << " time to conn: " << self->target_.ping_milliseconds.count() << "ms." << std::endl;
                 self->c_.sync();
                 self->c_.save();
             } else {

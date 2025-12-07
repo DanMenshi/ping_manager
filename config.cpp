@@ -7,8 +7,10 @@ void config::create_json() {
     json["targets"] = nlohmann::json::array();
     json["targets"].push_back({
             {"host", "google.com"},
-            {"port", 431},
-            {"last_ping", -1}
+            {"ip_v4", "0.0.0.0"},
+            {"port", 443},
+            {"ping_milliseconds", -1},
+            {"ping_microseconds", -1},
         });
 }
 
@@ -36,7 +38,9 @@ void config::sync() {
         fileT.push_back({
             {"host", targets[i].host},
             {"port", targets[i].port},
-            {"last_ping", targets[i].last_ping.count()},
+            {"ip_v4", targets[i].ip_v4.to_string()},
+            {"ping_milliseconds", targets[i].ping_milliseconds.count()},
+            {"ping_microseconds",targets[i].ping_microseconds.count()},
         });
     }
 }
@@ -56,8 +60,11 @@ config::config() {
     targets.resize(arr.size());
     for (int i = 0; i < json["targets"].size(); ++i) {
         targets[i].host = arr[i]["host"];
+        std::string ip_v4 = arr[i]["ip_v4"];
+        targets[i].ip_v4 = boost::asio::ip::make_address_v4(ip_v4);
         targets[i].port = arr[i]["port"];
-        targets[i].last_ping = std::chrono::milliseconds(arr[i]["last_ping"]);
+        targets[i].ping_milliseconds = std::chrono::milliseconds(arr[i]["ping_milliseconds"]);
+        targets[i].ping_microseconds = std::chrono::microseconds(arr[i]["ping_microseconds"]);
     }
 }
 
@@ -66,7 +73,7 @@ std::vector<target>& config::getTargets() {
 }
 
 void config::add_new_target(const std::string& host, int port) {
-    auto t = target{host, port, std::chrono::milliseconds(-1)};
+    auto t = target{host, boost::asio::ip::make_address_v4("0.0.0.0"), port, std::chrono::milliseconds(-1), std::chrono::microseconds(-1)};
     if (only_target(t)) {
         targets.push_back(t);
     }
@@ -83,10 +90,21 @@ bool config::only_target(const target& target) {
     return true;
 }
 
-void config::setPing(const std::string& host, int port, std::chrono::milliseconds ms) {
+void config::setPing(const std::string& host, int port, std::chrono::milliseconds ms, std::chrono::microseconds mics) {
     for (auto& t : targets) {
         if (t.host == host && t.port == port) {
-            t.last_ping = ms;
+            t.ping_milliseconds = ms;
+            t.ping_microseconds = mics;
+        }
+    }
+    sync();
+    save();
+}
+void config::setPing(target& target) {
+    for (auto& t : targets) {
+        if (t.host == target.host && t.port == target.port) {
+            t.ping_milliseconds = target.ping_milliseconds;
+            t.ping_microseconds = target.ping_microseconds;
         }
     }
     sync();
