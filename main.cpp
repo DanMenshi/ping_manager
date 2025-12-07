@@ -1,6 +1,5 @@
 #include <QCoreApplication>
 #include "config.h"
-#include "target.h"
 #include "client.h"
 
 int main(int argc, char *argv[]) {
@@ -11,6 +10,7 @@ int main(int argc, char *argv[]) {
 
     for (auto t : s.getTargets()) {
         std::make_shared<client>(io, t, s)->start();
+
     }
 
 
