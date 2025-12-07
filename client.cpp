@@ -42,7 +42,6 @@ void client::do_connect(const tcp::resolver::results_type& endpoints) {
                 self->target_.ping_milliseconds = self->time.get_ms();
                 self->target_.ping_microseconds = self->time.get_mcs();
                 self->target_.addr = self->endpoint_.address().to_string();
-                std::cout << endpoint.address().to_string() << ":" << endpoint.port() << " time to conn: " << self->target_.ping_milliseconds.count() << "ms." << std::endl;
                 self->c_.setPing(self->target_);
             } else {
                 std::cerr << "Error: " << ec.message() << std::endl;
