@@ -1,6 +1,5 @@
 #include <QCoreApplication>
 #include "config.h"
-#include "target.h"
 #include "client.h"
 
 int main(int argc, char *argv[]) {
