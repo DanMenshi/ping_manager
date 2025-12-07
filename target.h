@@ -6,7 +6,7 @@
 
 struct target {
     std::string host;
-    boost::asio::ip::address_v4 ip_v4;
+    std::string addr;
     int port;
     std::chrono::milliseconds ping_milliseconds;
     std::chrono::microseconds ping_microseconds;
