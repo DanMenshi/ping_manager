@@ -9,7 +9,9 @@ int main(int argc, char *argv[]) {
     config s{};
 
 
-
+    for (auto t : s.getTargets()) {
+        std::make_shared<client>(io, t, s)->start();
+    }
 
 
     io.run();

@@ -22,7 +22,6 @@ void client::do_resolve() {
     [self] (const boost::system::error_code ec, tcp::resolver::results_type endpoints){
         if (!ec) {
             self->first = std::chrono::high_resolution_clock::now();
-            self->do_connect(endpoints);
         }
         else {
             std::cerr << "Error: " << ec.message() << std::endl;

@@ -15,6 +15,7 @@ qt_add_executable(start
 
     target.h
     client.h client.cpp
+    timer.h timer.cpp
 )
 
 target_link_libraries(start
