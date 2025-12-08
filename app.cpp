@@ -47,17 +47,20 @@ void App::start() {
 }
 
 void App::connection() {
+    std::cout << "\033[2J\033[1;1H";
     int count = 0;
     while (count != MAX_COUNT_CONNECTION) {
         for (auto& ptr : clients) {
             ptr->start();
         }
         io_.run();
+        std::cout << "====" << std::endl;
         for (auto& target : config_.getTargets()) {
             std::cout << target.host << ":" << target.port << " : " << target.ping_milliseconds.count() << "ms." << std::endl;
         }
+        std::cout << "====" << "         ~" << count << std::endl;
         ++count;
-        std::this_thread::sleep_for(std::chrono::milliseconds(1200));
+        std::this_thread::sleep_for(std::chrono::milliseconds(400));
         std::cout << "\033[2J\033[1;1H";
         io_.restart();
     }
