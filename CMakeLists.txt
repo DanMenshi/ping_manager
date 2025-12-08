@@ -13,10 +13,10 @@ qt_standard_project_setup()
 qt_add_executable(start
     main.cpp
     config.h config.cpp
-
     target.h
     client.h client.cpp
     timer.h timer.cpp
+    app.h app.cpp
 )
 
 target_link_libraries(start

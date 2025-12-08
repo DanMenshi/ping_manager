@@ -46,6 +46,7 @@ void client::do_connect(const tcp::resolver::results_type& endpoints) {
             } else {
                 std::cerr << "Error: " << ec.message() << std::endl;
             }
+            self->socket_.close();
         });
 }
 
