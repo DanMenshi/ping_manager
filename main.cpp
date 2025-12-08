@@ -1,17 +1,14 @@
-#include <QCoreApplication>
+#include <boost/asio.hpp>
 #include "config.h"
-#include "client.h"
+#include "app.h"
 
-int main(int argc, char *argv[]) {
-    QCoreApplication a(argc, argv);
+int main() {
     boost::asio::io_context io;
     config s{};
 
-    for (auto t : s.getTargets()) {
-        std::make_shared<client>(io, t, s)->start();
-    }
+    App app{io, s};
 
+    app.choice();
 
-    io.run();
-    return a.exec();
+    return 1;
 }

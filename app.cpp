@@ -1,5 +1,6 @@
 #include "app.h"
 #include <iostream>
+#include <thread>
 
 namespace asio = boost::asio;
 
@@ -12,6 +13,8 @@ void App::choice() {
     std::cout << "Do you want add new target? (1. yes/2. no) \n~ ";
     int value = 0;
     std::cin >> value;
+    std::cout << std::endl;
+
     if (value == 1) {
         add_new_connect();
     } else {
@@ -49,11 +52,15 @@ void App::connection() {
         for (auto& ptr : clients) {
             ptr->start();
         }
+        io_.run();
         for (auto& target : config_.getTargets()) {
             std::cout << target.host << ":" << target.port << " : " << target.ping_milliseconds.count() << "ms." << std::endl;
         }
         ++count;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1200));
+        std::cout << "\033[2J\033[1;1H";
+        io_.restart();
     }
 
-    io_.run();
+
 }

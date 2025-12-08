@@ -4,7 +4,7 @@
 #include "config.h"
 #include "client.h"
 
-#define MAX_COUNT_CONNECTION 10
+#define MAX_COUNT_CONNECTION 10000000
 
 namespace asio = boost::asio;
 
@@ -13,8 +13,8 @@ class App
 public:
     App(asio::io_context& io_, config& config_);
     void choice();
-    void start();
 private:
+    void start();
     void add_new_connect();
     void connection();
     asio::io_context& io_;
