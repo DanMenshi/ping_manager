@@ -60,7 +60,7 @@ void App::connection() {
         }
         std::cout << "====" << "         ~" << count << std::endl;
         ++count;
-        std::this_thread::sleep_for(std::chrono::milliseconds(400));
+        std::this_thread::sleep_for(std::chrono::milliseconds(552));
         std::cout << "\033[2J\033[1;1H";
         io_.restart();
     }
