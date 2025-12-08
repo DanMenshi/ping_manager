@@ -1,9 +1,7 @@
-#include <QCoreApplication>
 #include "config.h"
 #include "client.h"
 
-int main(int argc, char *argv[]) {
-    QCoreApplication a(argc, argv);
+int main() {
     boost::asio::io_context io;
     config s{};
 
@@ -15,5 +13,5 @@ int main(int argc, char *argv[]) {
 
 
     io.run();
-    return a.exec();
+    return 1;
 }
