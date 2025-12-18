@@ -4,7 +4,7 @@
 #include "config.h"
 #include "client.h"
 
-#define MAX_COUNT_CONNECTION 10000000
+#define MAX_COUNT_CONNECTION 100000
 
 namespace asio = boost::asio;
 

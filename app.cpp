@@ -27,12 +27,10 @@ void App::add_new_connect() {
     std::string host;
     std::cout << "Write new host: ";
     std::cin >> host;
-    std::cout << std::endl;
 
     int port;
     std::cout << "Write and port: ";
     std::cin >> port;
-    std::cout << std::endl;
 
     if (targetExist(host, port)) {
         config_.add_new_target(host, port);
@@ -78,7 +76,7 @@ void App::connection() {
         }
         std::cout << "====" << "         ~" << count << std::endl;
         ++count;
-        std::this_thread::sleep_for(std::chrono::milliseconds(552));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
         std::cout << "\033[2J\033[1;1H";
         io_.restart();
     }
