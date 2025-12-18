@@ -6,10 +6,6 @@ int main() {
     boost::asio::io_context io;
     config s{};
     App app{io, s};
-
     app.choice();
-
-
-
     return 1;
 }

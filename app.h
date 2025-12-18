@@ -17,6 +17,7 @@ private:
     void start();
     void add_new_connect();
     void connection();
+    bool targetExist(std::string& host, int port);
     asio::io_context& io_;
     config& config_;
     std::vector<std::shared_ptr<client>> clients;

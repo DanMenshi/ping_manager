@@ -34,8 +34,26 @@ void App::add_new_connect() {
     std::cin >> port;
     std::cout << std::endl;
 
-    config_.add_new_target(host, port);
+    if (targetExist(host, port)) {
+        config_.add_new_target(host, port);
+    }
     choice();
+}
+
+bool App::targetExist(std::string& host, int port) {
+    try {
+        boost::asio::ip::tcp::resolver resolver(io_);
+        auto results = resolver.resolve(host, std::to_string(port));
+
+        if (!results.empty()) {
+            std::cout << "Added new target: " << host << ":" << port << std::endl;
+            return true;
+        }
+    } catch (std::exception& e) {
+        std::cout << "Failed added new target: " << host << ":" << port << std::endl;
+        return false;
+    }
+    return false;
 }
 
 void App::start() {
