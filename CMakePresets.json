@@ -1,0 +1,17 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "Ninja-Debug",
+            "displayName": "Ninja Debug Build",
+            "description": "Configure with Ninja generator for Debug build",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "/home/danya/Documents/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            }
+        }
+    ]
+}
